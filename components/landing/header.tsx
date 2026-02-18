@@ -1,16 +1,19 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { Menu, X } from "lucide-react"
+import { useState } from "react"
+
+import Link from "next/link"
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Features", href: "#features" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Features", href: "/#features" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
+  { label: "Dashboard", href: "/dashboard" },
 ]
 
 export function Header() {
@@ -48,7 +51,7 @@ export function Header() {
 
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
             <svg
               width="20"
@@ -70,18 +73,18 @@ export function Header() {
           <span className="text-xl font-bold tracking-tight text-foreground">
             MRU <span className="font-medium text-primary">Merchant OS</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="relative rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -91,14 +94,16 @@ export function Header() {
             variant="outline"
             size="sm"
             className="border-primary bg-transparent text-primary hover:bg-primary/5"
+            asChild
           >
-            Log In
+            <Link href="/login">Log In</Link>
           </Button>
           <Button
             size="sm"
             className="bg-primary text-primary-foreground hover:bg-primary/90"
+            asChild
           >
-            Get Started
+            <Link href="/dashboard">Get Started</Link>
           </Button>
         </div>
 
@@ -123,24 +128,25 @@ export function Header() {
       >
         <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Mobile navigation">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
               className="rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <div className="mt-3 flex flex-col gap-2">
             <Button
               variant="outline"
               className="w-full border-primary bg-transparent text-primary hover:bg-primary/5"
+              asChild
             >
-              Log In
+              <Link href="/login">Log In</Link>
             </Button>
-            <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-              Get Started
+            <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+              <Link href="/dashboard">Get Started</Link>
             </Button>
           </div>
         </nav>
