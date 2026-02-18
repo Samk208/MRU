@@ -1,0 +1,215 @@
+Based on *current best practices and real industry trends*, here’s a **practical assessment of what features you should build now for MRU Merchant OS, and which should be planned as future enhancements**. This roadmap balances *what’s doable with your Supabase + Next.js + AI stack today* with *what is advanced, valuable, but better deferred* until your core is solid and traffic justifies it.
+
+---
+
+# 🚀 **Features to Build *Now*** — MVP / Early 1–3 Months
+
+These are **high-impact, high-feasibility features** that align with current technical maturity and market expectations:
+
+---
+
+## 🔹 1) Easy Voice-First Store Creation (Foundational)
+
+✔ Generate a simple digital storefront **from voice commands or quick prompts**
+✔ Minimally formatted pages with products + “Buy on WhatsApp” buttons
+✔ Support English + French for launch (later expandable to local dialects)
+
+👉 This aligns with the *Shopify AI Store Builder idea* — using generative AI to auto-create store layouts + content from merchant input — simplified for your use case. ([Reuters][1])
+
+**Why now?**
+• Core value proposition
+• Solves *friction point* immediately
+• Builds storefronts without merchants needing to code
+
+---
+
+## 🔹 2) Voice-Based Transaction Logging & Feedback
+
+✔ Accept audio via WhatsApp
+✔ Convert to text via Whisper / STT
+✔ Intent parsing (Sell, Restock, Balance) via LLM
+✔ Confirmations back to the merchant
+
+This is the core user experience differentiator — letting voice be the interface.
+AI processing like transcription + intent extraction should be **live and responsive** from the start.
+
+---
+
+## 🔹 3) Supabase-Managed Backend & Authentication
+
+✔ Merchant accounts with Supabase Auth
+✔ Role permissions & profiles
+✔ Secure webhook endpoints for WhatsApp responses
+
+Following Supabase guided best practices ensures robustness. ([Supabase][2])
+
+---
+
+## 🔹 4) Mobile Money Integration (Payments & Float Tracking)
+
+✔ MTN MoMo
+✔ Orange Money
+
+Even basic payment triggers and balance tracking early on greatly improves stickiness, since mobile money is your *real payment rail*.
+
+---
+
+## 🔹 5) Simplified Dashboard (Next.js + Tailwind)
+
+✔ Basic sales view
+✔ Mobile money float
+✔ Inventory summary
+
+This is core to merchant value — **usable insights without complexity**.
+
+---
+
+## 🔹 6) Basic AI Assistant for Navigation
+
+✔ A simple AI chat interface (text + optional voice)
+✔ Help merchants interpret and act on data (e.g., “Show yesterday’s sales”)
+
+Generative AI here is not used for deep automation, but for guidance and discovery — *high value yet simple to implement*.
+
+---
+
+# ⚡ **Near-Term Enhancements (Phase 2)** — 3–6 Months
+
+These are capabilities that *strengthen your product* but can wait until the core system is live:
+
+---
+
+## 🔹 7) Improved Template Library for Storefronts
+
+Instead of *basic stores*, offer **pre-designed templates** you can auto-generate based on merchant type.
+
+Inspired by Shopify’s AI Store Builder concept where merchants get multiple layout options from keywords + AI. ([Reuters][1])
+
+---
+
+## 🔹 8) Predictive Insights & Trend Cards
+
+✔ Sales trend analysis
+✔ Inventory alerts (AI-driven)
+✔ Balance forecasting
+
+These belong in a merchant dashboard — backed by analytics and AI insights (e.g., “You may run out of beans in 2 days”).
+
+---
+
+## 🔹 9) Recommender Engine Support
+
+AI can begin to personalize suggestions — e.g., products to restock based on patterns, price optimization hints, etc. Recommender systems are standard in modern commerce platforms. ([Wikipedia][3])
+
+This is not critical for initial launch but becomes strategically important as the user base grows.
+
+---
+
+## 🔹 10) Local Language STT + NLU Support
+
+✔ Support Liberian Pidgin & Guinean French dialects
+
+Though powerful, this is **resource-heavy** (needs fine-tuned models) and should come *after stability and usage data*. Implementation should be staged with careful ASR/LLM training.
+
+---
+
+# 🧠 **Advanced AI Roadmap (Future Enhancements)** — 6+ Months
+
+These are powerful, but **complex, costly, or infrastructure-heavy**. Plan them after you have product traction, analytics maturity, and revenue runway.
+
+---
+
+## 🚀 11) Multi-Agent AI Workflows & Autonomous Actions
+
+Inspired by *agentic commerce* trends — AI agents that can operate independently (search, negotiate, auto-order stock). ([Wikipedia][4])
+
+This is forward-looking and powerful but requires:
+
+✔ strong data layer
+✔ secure AI orchestration
+✔ policy guards (to prevent misuse)
+
+Good *long-term horizon*.
+
+---
+
+## 🛍️ 12) Personalized AI Shopping Assistant
+
+Full conversational AI that can provide recommendations, product discovery, and voice commerce — beyond basic voice logging. Models could suggest products based on merchant inventory + demand patterns. ([Insider][5])
+
+---
+
+## 🤖 13) Autonomous Float Rebalancing
+
+AI that intelligently rebalances mobile money floats for agents automatically using predictive demand — more advanced fintech automation.
+
+---
+
+## 📊 14) Unified Customer Profile (AI-Driven CDP)
+
+Once you have enough usage data, build a **Customer Data Platform (CDP)** that unifies merchant behavior across platforms and channels. ([Wikipedia][6])
+
+This enables:
+
+✔ personalized experiences
+✔ retention automation
+✔ advanced analytics
+
+---
+
+## 🧠 15) AI-Based Legal & Tax Optimization
+
+Generate tax-compliant filings from voice + transactional history automatically — a *killer automation* — but can wait until the core ledger system is stable.
+
+---
+
+# 🧭 **Best Practice Logic for Prioritization**
+
+Here’s the mental model to decide what to build now vs later:
+
+**Immediately Valuable + Technically Feasible**
+→ Done now
+
+**Strategic + Adds Differentiation but technically heavier**
+→ Phase 2
+
+**Highly AI-Sophisticated / Autonomous / Advanced analytics**
+→ Long-term future
+
+This aligns with *current industry AI deployment patterns* — tools are already feasible for store creation and basic automation today, while agentic and autonomous commerce models are more future-focused. ([LinkedIn][7])
+
+---
+
+# 🧠 Summary Recommendation
+
+**Build now:**
+✔ Easy storefront creation
+✔ Voice transaction logging
+✔ Supabase backend + auth
+✔ Mobile money payment + balance
+✔ Merchant dashboard
+✔ Simple AI assistant
+
+**Near-term enhancements:**
+✔ Custom store templates
+✔ Predictive analytics and forecasting
+✔ Recommender hints
+✔ Extended language support
+
+**Future innovations:**
+✔ Agentic autonomous commerce
+✔ Full AI shopping assistant
+✔ AI tax automation
+✔ CDP and personalized merchant profiles
+
+---
+
+If you want, I can now take this list and generate a **roadmap roadmap + timeline** (e.g., quarter by quarter) with milestones, resources, and risks — ideal for your pitch deck and SFL submission.
+
+[1]: https://www.reuters.com/business/shopify-launches-ai-tool-that-builds-complete-online-stores-keywords-2025-05-21/?utm_source=chatgpt.com "Shopify launches AI tool that builds complete online stores from keywords"
+[2]: https://supabase.com/docs/guides/getting-started/tutorials/with-nextjs?utm_source=chatgpt.com "Build a User Management App with Next.js"
+[3]: https://en.wikipedia.org/wiki/Recommender_system?utm_source=chatgpt.com "Recommender system"
+[4]: https://en.wikipedia.org/wiki/Agentic_commerce?utm_source=chatgpt.com "Agentic commerce"
+[5]: https://insiderone.com/ai-retail-trends/?utm_source=chatgpt.com "AI in Retail 2026: 10 Trends Shaping the Future"
+[6]: https://en.wikipedia.org/wiki/Customer_data_platform?utm_source=chatgpt.com "Customer data platform"
+[7]: https://www.linkedin.com/pulse/roadmap-ai-commerce-today-tomorrow-next-decade-deptagency-nirhf?utm_source=chatgpt.com "Roadmap for AI commerce: Today, tomorrow, & the next ..."

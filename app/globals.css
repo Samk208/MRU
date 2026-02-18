@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    /* MRU Brand: Blue #0062FF, Charcoal #222222, Off-white #FAFBFD */
+    --background: 220 33% 98.4%;
+    --foreground: 0 0% 13.3%;
+    --card: 220 20% 99%;
+    --card-foreground: 0 0% 13.3%;
+    --popover: 220 20% 99%;
+    --popover-foreground: 0 0% 13.3%;
+    --primary: 216 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 216 20% 95.5%;
+    --secondary-foreground: 0 0% 13.3%;
+    --muted: 216 14% 94%;
+    --muted-foreground: 0 0% 33.3%;
+    --accent: 216 100% 33.3%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 4 89% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 216 12% 90%;
+    --input: 216 12% 90%;
+    --ring: 216 100% 50%;
+    --chart-1: 216 100% 50%;
+    --chart-2: 152 87% 38%;
+    --chart-3: 216 100% 33.3%;
+    --chart-4: 43 100% 63%;
+    --chart-5: 4 89% 55%;
+    --radius: 0.5rem;
+    --success: 152 87% 38%;
+    --warning: 40 100% 63%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Scroll-triggered animation utilities */
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.7s ease-out forwards;
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  .animate-slide-in-left {
+    animation: slideInLeft 0.7s ease-out forwards;
+  }
+  .animate-slide-in-right {
+    animation: slideInRight 0.7s ease-out forwards;
+  }
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* --- Glidtech-inspired functional animations --- */
+
+/* Word-by-word text reveal with blur */
+@keyframes wordReveal {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.animate-word-reveal {
+  animation: wordReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Horizontal marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Line draw for connectors */
+@keyframes lineDraw {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.animate-line-draw {
+  animation: lineDraw 0.8s ease-out forwards;
+}
+
+/* Card 3D tilt perspective wrapper */
+.perspective-card {
+  perspective: 800px;
+}
+
+.perspective-card-inner {
+  transition: transform 0.3s ease-out;
+  transform-style: preserve-3d;
+}
+
+/* Shimmer glow sweep */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(216 100% 50% / 0.08) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Number counter spring */
+@keyframes countPop {
+  0% { transform: scale(0.8); opacity: 0; }
+  60% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-count-pop {
+  animation: countPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Voice waveform bar animation */
+@keyframes waveBar {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+/* Ripple expansion from mic button */
+@keyframes rippleExpand {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Soft breathing glow */
+@keyframes breatheGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 hsl(216 100% 50% / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 16px hsl(216 100% 50% / 0);
+  }
+}
+
+/* Typewriter cursor blink */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Slide up with bounce */
+@keyframes slideUpBounce {
+  0% { transform: translateY(24px); opacity: 0; }
+  60% { transform: translateY(-4px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Stagger utility delays */
+.stagger-1 { animation-delay: 80ms; }
+.stagger-2 { animation-delay: 160ms; }
+.stagger-3 { animation-delay: 240ms; }
+.stagger-4 { animation-delay: 320ms; }
+.stagger-5 { animation-delay: 400ms; }
+.stagger-6 { animation-delay: 480ms; }
+.stagger-7 { animation-delay: 560ms; }
+.stagger-8 { animation-delay: 640ms; }
+.stagger-9 { animation-delay: 720ms; }
+.stagger-10 { animation-delay: 800ms; }

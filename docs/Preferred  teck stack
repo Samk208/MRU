@@ -1,0 +1,195 @@
+📦 MRU Merchant OS — Preferred Tech Stack (Next.js 15)
+🏗️ 1. Core Web Framework & App Structure
+Next.js 15 (App Router)
+
+Version: Next.js 15.x (Latest stable)
+
+Why:
+• Highly optimized SSR/SSG
+• Strong TypeScript support
+• Turbopack speed improvements
+• Excellent edge/ISR capabilities
+
+Usage:
+• Page routing
+• APIs (Webhooks, AI orchestration, mobile money endpoints)
+• Middleware for auth and redirects
+
+🛢️ 2. Backend & Database
+Supabase (v2.x+)
+
+Database: PostgreSQL
+
+Auth: Supabase Auth (email, phone OTP)
+
+Edge Functions: Serverless functions for webhooks & AI chains
+
+Realtime: Optional (for notifications, live updates)
+
+Why Supabase?
+
+Great synergy with Next.js
+
+Built-in RBAC
+
+Auth + database + functions in one place
+
+Works well with mobile and web
+
+📡 3. APIs & Integrations
+WhatsApp Meta Business API
+
+Voice + text messaging interface
+
+Incoming webhook handler in Next.js
+
+Mobile Money APIs
+
+MTN MoMo Open API — payments (STK Push), balance
+
+Orange Money API — transaction triggering, status
+
+These provide the core fintech payment rails for your app.
+
+🤖 4. AI & Machine Learning
+OpenAI Stack
+
+Whisper (Fine-tuned) — Speech-to-Text for voice commands
+
+GPT-4o (or equivalent) — Intent parsing, entity extraction
+
+TTS (OpenAI or comparable) — Audio confirmations (optional)
+Also gemini and claude
+
+Use Supabase Edge Functions or Next.js API routes to orchestrate AI calls.
+
+🎨 5. Frontend UI & Styling
+React + TailwindCSS
+
+React — UI components
+
+TailwindCSS — Utility-first styling (mobile-friendly, responsive)
+
+Why this combo?
+
+Works seamlessly with V0.app
+
+Small bundle footprint
+
+Easily themeable with your brand colors
+
+📊 6. Client Data Management
+Supabase JS SDK
+
+Handles:
+
+Auth state
+
+Data queries
+
+Subscriptions
+
+TanStack Query (React Query)
+
+Smart server state caching
+
+UI loading states
+
+Polling / sync logic
+
+🛠 7. State & Logic
+Layer	Tool
+Component State	React Hooks
+Server Data	TanStack Query
+Auth	Supabase Auth
+Realtime	Supabase Realtime (optional)
+🧪 8. Quality & Testing
+Area	Tool
+Unit / Component	Jest + React Testing Library
+End-to-End	Playwright or Cypress
+API	Supertest
+Type Safety	TypeScript (strict mode)
+🚀 9. Deployment & Hosting
+Primary Platforms
+
+Frontend + SSR + API: Vercel
+
+Backend Database + Functions: Supabase
+
+CI/CD
+
+GitHub Actions
+• Auto preview builds
+• Tests on PR
+• Auto deploy on main
+
+🔐 10. Security & Auth
+
+Supabase Auth with magic links, social providers (optional)
+
+Role-Based Access Control in Supabase
+
+API route guards in Next.js (middleware)
+
+Secure webhook validation (X-Hub-Signature, JWT)
+
+🌍 11. Internationalization (i18n)
+
+English + French (initial)
+
+Next.js i18n routing
+
+Future plans:
+
+Local dialect fallback (e.g., broken English & Guinean French)
+
+Voice dialect support through fine-tuned STT
+
+📈 12. Monitoring & Analytics
+Observability	Tool
+Error Tracking	Sentry
+Performance	Vercel Analytics
+User Behavior	Google Analytics or Plausible
+Supabase Metrics	Supabase Dashboard
+🧩 13. Versioning Guide
+Component	Preferred Version
+Next.js	15.x
+React	Latest stable
+TailwindCSS	v3.x+
+Supabase	v2.x+
+Node.js	18 LTS+
+OpenAI API	Latest supported
+🧠 14. AI Interaction Orchestration (Recommended Pattern)
+
+Host the AI chain in serverless functions (Edge Functions or Next.js API), not in client code.
+
+Sample Flow
+
+WhatsApp audio received → webhook
+
+Audio conversion + noise processing → FFmpeg / WebRTC
+
+Speech-to-Text → Whisper
+
+Intent parsing → GPT-4o
+
+Action routing → merchant recording, storefront updates
+
+Response → TTS or text back to WhatsApp
+
+🧡 15. Summary (One-Liner)
+
+Next.js 15 + Supabase v2 + TailwindCSS + OpenAI AI stack + Mobile Money APIs — modern, scalable, and performant stack built for voice-first fintech apps with seamless developer experience and strong production support.
+
+📤 Share-Ready Block (Copy-Paste)
+Preferred Tech Stack:
+• Frontend: Next.js 15 (App Router) with React
+• Styling: TailwindCSS
+• Backend: Supabase v2 (PostgreSQL, Auth, Edge Functions)
+• AI: OpenAI Whisper (STT), GPT-4o (Intent), TTS via OpenAI
+• Data Fetching: Supabase JS SDK + TanStack Query
+• APIs: WhatsApp Meta Business API, MTN MoMo API, Orange Money API
+• Deployment: Vercel (Frontend + API), Supabase (Backend + Functions)
+• Testing: Jest, Playwright/Cypress, Supertest
+• Monitoring: Sentry, Vercel Analytics
+• i18n: English + French initially

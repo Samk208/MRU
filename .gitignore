@@ -1,0 +1,47 @@
+# v0 runtime files (should only exist in preview, not in git)
+__v0_runtime_loader.js
+__v0_devtools.tsx
+__v0_jsx-dev-runtime.ts
+instrumentation-client.js
+instrumentation-client.ts
+
+# Common ignores
+node_modules/
+.next/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.DS_Store
+dist/
+coverage/
+
+# Supabase
+supabase/.env
+supabase/.branches
+supabase/.temp
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor
+.vscode
+.idea
+
+# OS
+Thumbs.db
+
+# Project Specific
+docs.zip
+status.txt
+status_fixed.txt
+supabase-status-fixed.json
+tsc_errors.txt
+tsc_errors_fixed.txt
+
+# Agent
+.agent/
