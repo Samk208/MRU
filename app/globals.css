@@ -276,3 +276,17 @@
 .stagger-8 { animation-delay: 640ms; }
 .stagger-9 { animation-delay: 720ms; }
 .stagger-10 { animation-delay: 800ms; }
+
+/* Accessibility: respect prefers-reduced-motion for users who request it.
+   Kills all animations, transitions, and scroll smoothing — keeps content
+   readable without motion sickness or distraction (per WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

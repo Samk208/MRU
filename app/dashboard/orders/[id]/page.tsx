@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { createClient } from '@/lib/supabase/server'
 import { ArrowLeft, Mail, MapPin, Phone } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { OrderStatusControls } from '../status-controls'
@@ -57,9 +58,9 @@ export default async function OrderDetailsPage({ params }: { params: Promise<{ i
                             {order.order_items.map((item: any) => (
                                 <div key={item.id} className="flex justify-between items-start">
                                     <div className="flex gap-3">
-                                        <div className="h-12 w-12 bg-gray-100 rounded-md border overflow-hidden">
+                                        <div className="relative h-12 w-12 bg-gray-100 rounded-md border overflow-hidden">
                                             {item.products?.images?.[0] && (
-                                                <img src={item.products.images[0]} alt="" className="h-full w-full object-cover" />
+                                                <Image src={item.products.images[0]} alt="" fill sizes="48px" className="object-cover" />
                                             )}
                                         </div>
                                         <div>

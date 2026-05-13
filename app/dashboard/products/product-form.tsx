@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Loader2, Upload, X } from 'lucide-react'
+import Image from 'next/image'
 import { useRef, useState } from 'react'
 import { createProduct } from './actions'
 
@@ -47,7 +48,7 @@ export function ProductForm() {
                 <div className="flex items-center gap-4">
                     {preview ? (
                         <div className="relative h-24 w-24 rounded-lg overflow-hidden border">
-                            <img src={preview} alt="Preview" className="h-full w-full object-cover" />
+                            <Image src={preview} alt="Preview" fill sizes="96px" className="object-cover" />
                             <button
                                 type="button"
                                 onClick={() => {
