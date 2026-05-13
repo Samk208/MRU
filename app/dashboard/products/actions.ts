@@ -39,7 +39,7 @@ export async function createProduct(formData: FormData) {
     }
 
     const data = validation.data
-    let imageUrls: string[] = []
+    const imageUrls: string[] = []
 
     // 2. Handle Image Upload (Single image for now)
     const imageFile = formData.get('image') as File

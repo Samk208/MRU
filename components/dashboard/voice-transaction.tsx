@@ -11,7 +11,8 @@ import { useCallback, useEffect, useRef, useState } from "react"
 
 type RecordingState = "idle" | "listening" | "processing" | "confirmed"
 
-import { parseTransaction } from "@/app/dashboard/voice/actions"
+import { parseTransaction, confirmVoiceTransaction } from "@/app/dashboard/voice/actions"
+import { toast } from "sonner"
 
 // Browser Speech Recognition Types
 interface SpeechRecognitionEvent extends Event {
@@ -177,6 +178,8 @@ export function VoiceTransaction() {
   const [showParsed, setShowParsed] = useState(false)
   const [showConfirmDialog, setShowConfirmDialog] = useState(false)
   const [summary, setSummary] = useState<TransactionSummary | null>(null)
+  const [parsedRaw, setParsedRaw] = useState<unknown>(null)
+  const [saving, setSaving] = useState(false)
   const { locale } = useLocale()
   const copy = getVoiceCopy(locale)
 
@@ -190,6 +193,7 @@ export function VoiceTransaction() {
     const result = await parseTransaction(fullText)
 
     if (result.data) {
+      setParsedRaw(result.data)
       setSummary({
         type: result.data.type,
         item: result.data.item,
@@ -269,11 +273,38 @@ export function VoiceTransaction() {
     setShowParsed(false)
   }, [])
 
-  const confirmTransaction = useCallback(() => {
-    setState("idle")
-    setTranscriptLines([])
-    setShowParsed(false)
-  }, [])
+  const handleConfirmTransaction = useCallback(async () => {
+    if (!parsedRaw) {
+      toast.error("Nothing to confirm")
+      return
+    }
+    setSaving(true)
+    try {
+      const res = await confirmVoiceTransaction({
+        transcript: transcriptLines.join(" "),
+        parsed: parsedRaw,
+      })
+      if ('error' in res) {
+        toast.error(res.error)
+        return
+      }
+      if (res.data.kind === 'transaction') {
+        toast.success("Transaction saved")
+      } else {
+        toast.success("Inventory updated")
+      }
+      setState("idle")
+      setTranscriptLines([])
+      setShowParsed(false)
+      setParsedRaw(null)
+      setSummary(null)
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Unknown error'
+      toast.error('Failed to save: ' + msg)
+    } finally {
+      setSaving(false)
+    }
+  }, [parsedRaw, transcriptLines])
 
   useEffect(() => {
     return () => {
@@ -482,7 +513,7 @@ export function VoiceTransaction() {
           summary={summary!}
           onConfirm={() => {
             setShowConfirmDialog(false)
-            confirmTransaction()
+            handleConfirmTransaction()
           }}
           onCancel={() => {
             setShowConfirmDialog(false)

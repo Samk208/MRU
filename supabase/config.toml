@@ -87,6 +87,6 @@ inspector_port = 8084
 deno_version = 2
 
 [analytics]
-enabled = true
+enabled = false
 port = 64327
 backend = "postgres"
