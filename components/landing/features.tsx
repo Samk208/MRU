@@ -1,5 +1,7 @@
 "use client"
 
+import { useTranslations } from "next-intl"
+
 import React from "react"
 
 import { useCallback, useRef } from "react"
@@ -95,6 +97,7 @@ function TiltCard({
 }
 
 export function Features() {
+  const t = useTranslations("landing.features")
   const { ref, isVisible } = useAnimateOnScroll()
 
   return (
@@ -115,14 +118,13 @@ export function Features() {
           )}
         >
           <span className="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
-            Features
+            {t("sectionBadge")}
           </span>
           <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            Everything you need to run your business
+            {t("sectionTitle")}
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Built for how you actually work — by voice, on your phone, in the
-            market.
+            {t("sectionSubtitle")}
           </p>
         </div>
 
@@ -172,7 +174,7 @@ export function Features() {
 
               {/* Hover arrow */}
               <div className="relative mt-6 flex items-center gap-1 text-sm font-semibold text-primary opacity-0 transition-all duration-300 group-hover:opacity-100">
-                Learn more
+                {t("learnMore")}
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </div>
             </TiltCard>

@@ -1,10 +1,13 @@
 "use client"
 
+import { useTranslations } from "next-intl"
+
 import { useEffect, useState, useRef } from "react"
 import { ArrowRight, Play, Mic, Smartphone, Shield } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function Hero() {
+  const t = useTranslations("landing.hero")
   const [loaded, setLoaded] = useState(false)
   const phoneRef = useRef<HTMLDivElement>(null)
 
@@ -75,7 +78,7 @@ export function Hero() {
             }`}
           >
             <span className="h-2 w-2 rounded-full bg-[hsl(var(--success))]" />
-            Now available in Liberia & Guinea
+            {t("badge")}
           </div>
 
           {/* Headline with word-by-word blur reveal */}
@@ -101,9 +104,7 @@ export function Hero() {
                 : "translate-y-6 opacity-0"
             }`}
           >
-            Record sales, accept mobile money payments, and track your business
-            — all using just your voice on WhatsApp. Powered by OpenAI Whisper,
-            Claude, and Gemini. No app download. No literacy required.
+            {t("subtitle")}
           </p>
 
           {/* CTAs */}
@@ -118,7 +119,7 @@ export function Hero() {
               size="lg"
               className="group gap-2 bg-primary px-8 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30"
             >
-              Get Started for Free
+              {t("ctaPrimary")}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
             <Button
@@ -127,7 +128,7 @@ export function Hero() {
               className="group gap-2 border-border bg-transparent px-8 text-base font-semibold text-foreground transition-all hover:bg-secondary"
             >
               <Play className="h-4 w-4 fill-primary text-primary transition-transform group-hover:scale-110" />
-              Watch Demo
+              {t("ctaSecondary")}
             </Button>
           </div>
 
@@ -141,17 +142,17 @@ export function Hero() {
           >
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Shield className="h-4 w-4 text-primary" />
-              <span>Bank-level security</span>
+              <span>{t("trustSecurity")}</span>
             </div>
             <div className="h-4 w-px bg-border" />
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Smartphone className="h-4 w-4 text-primary" />
-              <span>Works on any phone</span>
+              <span>{t("trustPhone")}</span>
             </div>
             <div className="h-4 w-px bg-border" />
             <div className="text-sm text-muted-foreground">
               <span className="font-semibold text-foreground">500+</span>{" "}
-              merchants onboarded
+              {t("trustMerchants")}
             </div>
           </div>
         </div>

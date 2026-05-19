@@ -7,7 +7,7 @@ import { createClient } from '@/lib/supabase/client'
 import { Loader2, Save } from 'lucide-react'
 import { useState } from 'react'
 import { toast } from 'sonner'
-import { saveStoreConfiguration } from '@/app/dashboard/store/actions'
+import { saveStoreConfiguration } from '@/app/[locale]/dashboard/store/actions'
 
 export function StoreGeneratorForm() {
     const [prompt, setPrompt] = useState('')

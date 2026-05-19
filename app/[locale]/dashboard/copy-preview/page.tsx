@@ -2,12 +2,10 @@
 
 import { useState } from "react"
 import { Check, Mic, Package, Wallet, CreditCard, Globe } from "lucide-react"
-import {
-  getVoiceCopy,
-  fillTemplate,
-  type Locale,
-  type TransactionAction,
-} from "@/lib/i18n/voice-copy"
+import { fillTemplate, type TransactionAction } from "@/lib/i18n/voice-copy"
+import type { Locale } from "@/lib/i18n/voice-copy"
+import enMsgs from "@/messages/en.json"
+import frMsgs from "@/messages/fr.json"
 import { BottomNav } from "@/components/dashboard/bottom-nav"
 import Link from "next/link"
 
@@ -83,7 +81,7 @@ function CopyCard({
   locale: Locale
   action: (typeof actions)[number]
 }) {
-  const copy = getVoiceCopy(locale)
+  const copy = (locale === "en" ? (enMsgs as any).voiceCopy : (frMsgs as any).voiceCopy)
   const conf = copy.confirmations[action.key]
   const filled = fillTemplate(conf.template, action.sampleValues)
 
@@ -151,7 +149,7 @@ function CopyCard({
 
 export default function CopyPreviewPage() {
   const [activeLocale, setActiveLocale] = useState<Locale>("en")
-  const copy = getVoiceCopy(activeLocale)
+  const copy = (activeLocale === "en" ? (enMsgs as any).voiceCopy : (frMsgs as any).voiceCopy)
 
   return (
     <div
@@ -291,8 +289,8 @@ export default function CopyPreviewPage() {
           </h2>
           <div className="flex flex-col gap-4">
             {actions.map((action) => {
-              const enCopy = getVoiceCopy("en")
-              const frCopy = getVoiceCopy("fr")
+              const enCopy = (enMsgs as any).voiceCopy
+              const frCopy = (frMsgs as any).voiceCopy
               const enFilled = fillTemplate(
                 enCopy.confirmations[action.key].template,
                 action.sampleValues,

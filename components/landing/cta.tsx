@@ -1,5 +1,8 @@
 "use client"
 
+import { useTranslations } from "next-intl"
+import { Link } from "@/i18n/navigation"
+
 import React from "react"
 
 import { useCallback, useRef } from "react"
@@ -48,6 +51,7 @@ function MagneticButton({
 }
 
 export function CTA() {
+  const t = useTranslations("landing.cta")
   const { ref, isVisible } = useAnimateOnScroll()
 
   return (
@@ -75,18 +79,17 @@ export function CTA() {
         </div>
 
         <h2 className="relative text-balance text-3xl font-bold tracking-tight text-background md:text-4xl">
-          Ready to grow your business with your voice?
+          {t("title")}
         </h2>
         <p className="relative mx-auto mt-4 max-w-xl text-lg leading-relaxed text-background/70">
-          Join hundreds of merchants across Liberia and Guinea who are already
-          using MRU Merchant OS. Start for free today.
+          {t("subtitle")}
         </p>
         <div className="relative mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <MagneticButton
             size="lg"
             className="group gap-2 bg-primary px-8 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/30 hover:bg-primary/90 hover:shadow-xl"
           >
-            Get Started for Free
+            {t("ctaPrimary")}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </MagneticButton>
           <MagneticButton
@@ -94,7 +97,7 @@ export function CTA() {
             size="lg"
             className="gap-2 border-background/20 bg-transparent px-8 text-base font-semibold text-background hover:bg-background/10"
           >
-            Talk to Sales
+            {t("ctaSecondary")}
           </MagneticButton>
         </div>
       </div>

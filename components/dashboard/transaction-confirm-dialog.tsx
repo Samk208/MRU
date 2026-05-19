@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useTranslations } from "next-intl"
 import { Check, X, Loader2, ShoppingBag } from "lucide-react"
 import {
   AlertDialog,
@@ -12,8 +13,6 @@ import {
   AlertDialogCancel,
   AlertDialogAction,
 } from "@/components/ui/alert-dialog"
-import { useLocale } from "@/lib/i18n/locale-context"
-import { getVoiceCopy } from "@/lib/i18n/voice-copy"
 
 export interface TransactionSummary {
   type: "sale" | "purchase" | "payment"
@@ -61,8 +60,7 @@ export function TransactionConfirmDialog({
   onCancel,
 }: TransactionConfirmDialogProps) {
   const [confirming, setConfirming] = useState(false)
-  const { locale } = useLocale()
-  const copy = getVoiceCopy(locale)
+  const t = useTranslations("voiceCopy")
   const config = typeConfig[summary.type]
 
   function handleConfirm() {
@@ -80,17 +78,17 @@ export function TransactionConfirmDialog({
   }
 
   const summaryRows: { label: string; value: string }[] = [
-    { label: copy.itemLabel, value: summary.item },
-    { label: copy.amountLabel, value: summary.amount },
+    { label: t('itemLabel'), value: summary.item },
+    { label: t('amountLabel'), value: summary.amount },
   ]
   if (summary.customer) {
-    summaryRows.push({ label: copy.customerLabel, value: summary.customer })
+    summaryRows.push({ label: t('customerLabel'), value: summary.customer })
   }
   if (summary.method) {
-    summaryRows.push({ label: copy.methodLabel, value: summary.method })
+    summaryRows.push({ label: t('methodLabel'), value: summary.method })
   }
   if (summary.tax) {
-    summaryRows.push({ label: copy.taxLabel, value: summary.tax })
+    summaryRows.push({ label: t('taxLabel'), value: summary.tax })
   }
 
   return (
@@ -121,10 +119,10 @@ export function TransactionConfirmDialog({
               />
             </div>
             <AlertDialogTitle className="text-xl font-bold text-foreground leading-tight">
-              {copy.dialogTitle}
+              {t('dialogTitle')}
             </AlertDialogTitle>
             <AlertDialogDescription className="text-sm text-muted-foreground leading-relaxed">
-              {copy.dialogDescription}
+              {t('dialogDescription')}
             </AlertDialogDescription>
           </AlertDialogHeader>
 
@@ -183,7 +181,7 @@ export function TransactionConfirmDialog({
               className="mt-0 flex h-14 flex-1 items-center justify-center gap-2 rounded-2xl border-border/60 bg-[hsl(220_20%_99%)] text-base font-semibold text-foreground transition-all hover:bg-secondary active:scale-[0.97] sm:mt-0"
             >
               <X className="h-5 w-5" />
-              {copy.cancelButton}
+              {t('cancelButton')}
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleConfirm}
@@ -193,12 +191,12 @@ export function TransactionConfirmDialog({
               {confirming ? (
                 <>
                   <Loader2 className="h-5 w-5 animate-spin" />
-                  {copy.confirmingButton}
+                  {t('confirmingButton')}
                 </>
               ) : (
                 <>
                   <Check className="h-5 w-5" />
-                  {copy.confirmButton}
+                  {t('confirmButton')}
                 </>
               )}
             </AlertDialogAction>

@@ -7,7 +7,38 @@
     "error": "Something went wrong",
     "language": "Language"
   },
-  "landing": {},
+  "landing": {
+    "hero": {
+      "badge": "Now available in Liberia & Guinea",
+      "title": "Voice-First Commerce & Mobile Money for Everyday Merchants",
+      "subtitle": "Record sales, accept mobile money payments, and track your business — all using just your voice on WhatsApp. Powered by OpenAI Whisper, Claude, and Gemini. No app download. No literacy required.",
+      "ctaPrimary": "Get Started for Free",
+      "ctaSecondary": "Watch Demo",
+      "trustSecurity": "Bank-level security",
+      "trustPhone": "Works on any phone",
+      "trustMerchants": "merchants onboarded"
+    },
+    "nav": {
+      "home": "Home",
+      "features": "Features",
+      "pricing": "Pricing",
+      "about": "About",
+      "contact": "Contact",
+      "dashboard": "Dashboard"
+    },
+    "cta": {
+      "title": "Ready to grow your business with your voice?",
+      "subtitle": "Join hundreds of merchants across Liberia and Guinea who are already using MRU Merchant OS. Start for free today.",
+      "ctaPrimary": "Get Started for Free",
+      "ctaSecondary": "Talk to Sales"
+    },
+    "features": {
+      "sectionBadge": "Features",
+      "sectionTitle": "Everything you need to run your business",
+      "sectionSubtitle": "Built for how you actually work — by voice, on your phone, in the market.",
+      "learnMore": "Learn more"
+    }
+  },
   "auth": {},
   "dashboard": {
     "nav": {},

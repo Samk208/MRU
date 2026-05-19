@@ -1,22 +1,27 @@
 "use client"
 
+import { useTranslations } from "next-intl"
+import { Link } from "@/i18n/navigation"
+
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { Menu, X } from "lucide-react"
 import { useEffect, useState } from "react"
 
-import Link from "next/link"
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Features", href: "/#features" },
-  { label: "Pricing", href: "/#pricing" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
-  { label: "Dashboard", href: "/dashboard" },
+
+const navLinks = (t: any) => [
+  { label: t("home"), href: "/" },
+  { label: t("features"), href: "/#features" },
+  { label: t("pricing"), href: "/#pricing" },
+  { label: t("about"), href: "/#about" },
+  { label: t("contact"), href: "/#contact" },
+  { label: t("dashboard"), href: "/dashboard" },
 ]
 
 export function Header() {
+  const t = useTranslations("landing.nav")
+  const links = navLinks(t) as {label:string,href:string}[]
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
   const [scrolled, setScrolled] = useState(false)
@@ -77,7 +82,7 @@ export function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
-          {navLinks.map((link) => (
+          {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -127,7 +132,7 @@ export function Header() {
         )}
       >
         <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Mobile navigation">
-          {navLinks.map((link) => (
+          {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}

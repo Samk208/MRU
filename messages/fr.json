@@ -7,7 +7,38 @@
     "error": "Une erreur est survenue",
     "language": "Langue"
   },
-  "landing": {},
+  "landing": {
+    "hero": {
+      "badge": "Disponible au Liberia & Guinee",
+      "title": "Commerce Vocal & Mobile Money pour Commercants du Quotidien",
+      "subtitle": "Enregistrez vos ventes, acceptez les paiements mobile money et suivez votre activite — tout cela avec votre voix sur WhatsApp. Propulse par OpenAI Whisper, Claude et Gemini. Pas d'application a telecharger. Pas besoin de savoir lire.",
+      "ctaPrimary": "Commencer Gratuitement",
+      "ctaSecondary": "Voir la Demo",
+      "trustSecurity": "Securite bancaire",
+      "trustPhone": "Fonctionne sur tout telephone",
+      "trustMerchants": "commercants inscrits"
+    },
+    "nav": {
+      "home": "Accueil",
+      "features": "Fonctionnalites",
+      "pricing": "Tarifs",
+      "about": "A Propos",
+      "contact": "Contact",
+      "dashboard": "Tableau de Bord"
+    },
+    "cta": {
+      "title": "Pret a faire croitre votre activite avec votre voix ?",
+      "subtitle": "Rejoignez des centaines de commercants au Liberia et en Guinee qui utilisent deja MRU Merchant OS. Commencez gratuitement aujourdhui.",
+      "ctaPrimary": "Commencer Gratuitement",
+      "ctaSecondary": "Parler aux Ventes"
+    },
+    "features": {
+      "sectionBadge": "Fonctionnalites",
+      "sectionTitle": "Tout ce dont vous avez besoin pour gerer votre activite",
+      "sectionSubtitle": "Concu pour votre facon de travailler — a la voix, sur votre telephone, au marche.",
+      "learnMore": "En savoir plus"
+    }
+  },
   "auth": {},
   "dashboard": {
     "nav": {},

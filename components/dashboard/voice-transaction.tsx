@@ -4,14 +4,13 @@ import {
   TransactionConfirmDialog,
   type TransactionSummary,
 } from "@/components/dashboard/transaction-confirm-dialog"
-import { useLocale } from "@/lib/i18n/locale-context"
-import { getVoiceCopy } from "@/lib/i18n/voice-copy"
 import { Check, ChevronLeft, Loader2, Mic, X } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { useCallback, useEffect, useRef, useState } from "react"
 
 type RecordingState = "idle" | "listening" | "processing" | "confirmed"
 
-import { parseTransaction, confirmVoiceTransaction } from "@/app/dashboard/voice/actions"
+import { parseTransaction, confirmVoiceTransaction } from "@/app/[locale]/dashboard/voice/actions"
 import { toast } from "sonner"
 
 // Browser Speech Recognition Types
@@ -82,11 +81,11 @@ function WaveformVisualizer({ active }: { active: boolean }) {
 function TranscriptionArea({
   lines,
   isTyping,
-  copy,
+  t,
 }: {
   lines: string[]
   isTyping: boolean
-  copy: ReturnType<typeof getVoiceCopy>
+  t: (key: string) => string
 }) {
   const scrollRef = useRef<HTMLDivElement>(null)
 
@@ -107,7 +106,7 @@ function TranscriptionArea({
     >
       {lines.length === 0 && !isTyping ? (
         <p className="text-center text-sm text-muted-foreground">
-          {copy.transcriptionPlaceholder}
+          {t('transcriptionPlaceholder')}
         </p>
       ) : (
         <div className="flex flex-col gap-1">
@@ -134,7 +133,7 @@ function TranscriptionArea({
   )
 }
 
-function ParsedSummary({ copy, summary }: { copy: ReturnType<typeof getVoiceCopy>, summary: any }) {
+function ParsedSummary({ t, summary }: { t: (key: string) => string, summary: any }) {
   return (
     <div
       className="w-full rounded-2xl border border-[hsl(152_50%_85%)] p-4"
@@ -144,25 +143,25 @@ function ParsedSummary({ copy, summary }: { copy: ReturnType<typeof getVoiceCopy
       }}
     >
       <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[hsl(152_87%_32%)]">
-        {copy.parsedLabel}
+        {t('parsedLabel')}
       </p>
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          {copy?.itemLabel && <span>{copy.itemLabel}</span>}
+          {<span>{t('itemLabel')}</span>}
           <span className="text-sm font-semibold text-foreground">
             {summary?.item || "..."}
           </span>
         </div>
         <div className="h-px bg-border/60" />
         <div className="flex items-center justify-between">
-          <span className="text-sm text-muted-foreground">{copy.amountLabel}</span>
+          <span className="text-sm text-muted-foreground">{t('amountLabel')}</span>
           <span className="text-sm font-semibold text-foreground">
             {summary?.amount || "..."}
           </span>
         </div>
         <div className="h-px bg-border/60" />
         <div className="flex items-center justify-between">
-          <span className="text-sm text-muted-foreground">{copy.customerLabel}</span>
+          <span className="text-sm text-muted-foreground">{t('customerLabel')}</span>
           <span className="text-sm font-semibold text-foreground">
             {summary?.customer || "..."}
           </span>
@@ -180,8 +179,7 @@ export function VoiceTransaction() {
   const [summary, setSummary] = useState<TransactionSummary | null>(null)
   const [parsedRaw, setParsedRaw] = useState<unknown>(null)
   const [saving, setSaving] = useState(false)
-  const { locale } = useLocale()
-  const copy = getVoiceCopy(locale)
+  const t = useTranslations("voiceCopy")
 
   const recognitionRef = useRef<SpeechRecognition | null>(null)
 
@@ -344,25 +342,25 @@ export function VoiceTransaction() {
         <div className="flex flex-col items-center gap-1 text-center">
           {state === "idle" && (
             <p className="text-base font-medium text-muted-foreground leading-relaxed">
-              {copy.promptSubtitle}
+              {t('promptSubtitle')}
             </p>
           )}
           {state === "listening" && (
             <p className="text-base font-semibold text-primary">
-              {copy.listening}
+              {t('listening')}
             </p>
           )}
           {state === "processing" && (
             <div className="flex items-center gap-2">
               <Loader2 className="h-4 w-4 animate-spin text-primary" />
               <p className="text-base font-semibold text-primary">
-                {copy.processing}
+                {t('processing')}
               </p>
             </div>
           )}
           {state === "confirmed" && (
             <p className="text-base font-semibold text-[hsl(152_87%_32%)]">
-              {copy.transactionReady}
+              {t('transactionReady')}
             </p>
           )}
         </div>
@@ -373,7 +371,7 @@ export function VoiceTransaction() {
             className="flex flex-wrap items-center justify-center gap-2"
             style={{ animation: "slideUpBounce 0.5s ease-out forwards" }}
           >
-            {[copy.chipSale, copy.chipStock, copy.chipBalance].map((chip) => (
+            {[t('chipSale'), t('chipStock'), t('chipBalance')].map((chip) => (
               <span
                 key={chip}
                 className="rounded-full border border-primary/20 px-4 py-1.5 text-sm font-medium text-primary"
@@ -452,7 +450,7 @@ export function VoiceTransaction() {
         {/* Prompt text for idle state */}
         {state === "idle" && (
           <p className="text-center text-lg font-semibold text-foreground">
-            {copy.promptTitle}
+            {t('promptTitle')}
           </p>
         )}
 
@@ -472,13 +470,13 @@ export function VoiceTransaction() {
             <TranscriptionArea
               lines={transcriptLines}
               isTyping={state === "listening"}
-              copy={copy}
+              t={t}
             />
           </div>
         )}
 
         {/* Parsed transaction summary */}
-        {showParsed && summary && <ParsedSummary copy={copy} summary={summary} />}
+        {showParsed && summary && <ParsedSummary t={t} summary={summary} />}
 
         {/* Action buttons */}
         {state === "confirmed" && (
