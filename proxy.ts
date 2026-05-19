@@ -7,7 +7,7 @@ const handleI18nRouting = createMiddleware(routing);
 const PROTECTED_PATH = /^\/(en|fr)\/dashboard(\/.*)?$/;
 const AUTH_PATHS = ["/en/login","/fr/login","/en/register","/fr/register"];
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const response = handleI18nRouting(request);
   const pathname = request.nextUrl.pathname;
   if (PROTECTED_PATH.test(pathname)) {
