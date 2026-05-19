@@ -1,0 +1,74 @@
+{
+  "common": {
+    "appName": "MRU Merchant OS",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "language": "Langue"
+  },
+  "landing": {},
+  "auth": {},
+  "dashboard": {
+    "nav": {},
+    "store": {},
+    "voice": {},
+    "products": {},
+    "orders": {},
+    "transactions": {},
+    "wallet": {},
+    "profile": {}
+  },
+  "voiceCopy": {
+    "promptTitle": "Appuyez et Parlez : Vente, Stock ou Solde",
+    "promptSubtitle": "Appuyez sur le micro et parlez",
+    "chipSale": "Vente",
+    "chipStock": "Stock",
+    "chipBalance": "Solde",
+    "listening": "J ecoute...",
+    "processing": "L IA comprend vos mots...",
+    "transcriptionPlaceholder": "Vos mots apparaitront ici...",
+    "confirmations": {
+      "sale": {
+        "title": "Vente Enregistree",
+        "template": "{qty} {item} enregistres a {currency} {amount}. Confirmer ?",
+        "badge": "Vente",
+        "success": "Vente confirmee ! Votre registre est a jour. Bonne continuation !",
+        "cancelled": "Vente annulee. Aucune modification na ete enregistree."
+      },
+      "stock": {
+        "title": "Stock Ajoute",
+        "template": "{qty} {item} ajoutes au stock a {currency} {amount}. Confirmer ?",
+        "badge": "Stock",
+        "success": "Stock ajoute ! Votre inventaire est maintenant a jour.",
+        "cancelled": "Entree de stock annulee. Rien na ete modifie."
+      },
+      "balance": {
+        "title": "Solde Verifie",
+        "template": "Votre solde actuel est de {currency} {amount}.",
+        "badge": "Solde",
+        "success": "Verification du solde terminee. Tout va bien !",
+        "cancelled": "Verification du solde fermee."
+      },
+      "payment": {
+        "title": "Paiement Lance",
+        "template": "Envoi de {currency} {amount} a {customer} via {method}. Confirmer ?",
+        "badge": "Paiement",
+        "success": "Paiement envoye ! Vous recevrez une confirmation sur votre telephone.",
+        "cancelled": "Paiement annule. Aucun argent na ete envoye."
+      }
+    },
+    "dialogTitle": "Etes-vous sur de vouloir enregistrer cette transaction ?",
+    "dialogDescription": "Veuillez verifier les details ci-dessous avant de confirmer.",
+    "confirmButton": "Confirmer",
+    "cancelButton": "Annuler",
+    "confirmingButton": "Enregistrement...",
+    "transactionReady": "Transaction prete !",
+    "parsedLabel": "Transaction Analysee",
+    "itemLabel": "Article",
+    "amountLabel": "Montant",
+    "customerLabel": "Client",
+    "methodLabel": "Methode",
+    "taxLabel": "TVA (15%)"
+  }
+}
