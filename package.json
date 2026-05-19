@@ -14,7 +14,8 @@
     "supabase:reset": "supabase db reset",
     "supabase:types": "supabase gen types typescript --local > types/supabase.ts",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "i18n:check": "node scripts/i18n-coverage.mjs"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

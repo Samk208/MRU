@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 import { LayoutDashboard, Menu, Package, ShoppingCart, User } from 'lucide-react'
 import { Link } from '@/i18n/navigation'
 import { usePathname } from '@/i18n/navigation'
+import { LanguageSwitcher } from '@/components/language-switcher'
 
 const navItems = (t: any) => [
     {
@@ -41,8 +42,13 @@ export function DashboardNav() {
             {/* Desktop Sidebar */}
             <aside className="hidden md:flex flex-col w-64 border-r bg-card h-screen fixed left-0 top-0">
                 <div className="p-6 border-b">
+                    <div className="flex items-center justify-between">
                     <h2 className="text-2xl font-bold text-primary">MRU</h2>
                     <p className="text-xs text-muted-foreground">Merchant OS</p>
+                    </div>
+                    <div className="mt-3">
+                        <LanguageSwitcher />
+                    </div>
                 </div>
                 <nav className="flex-1 p-4 space-y-2">
                     {items.map((item) => (

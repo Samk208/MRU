@@ -20,7 +20,8 @@
 | `lib/persistence/parse.ts` | Pure helpers (amount/currency/quantity parsing, slugify) — fully unit-tested |
 | `lib/supabase/{client,server}.ts` | Supabase client factories (browser vs server) |
 | `lib/gemini.ts` | Gemini AI client |
-| `lib/i18n/` | Locale context + voice copy (EN/FR-ready) |
+| `i18n/` | next-intl routing, request, navigation config |
+| `messages/` | ICU MessageFormat dictionaries (EN + FR) |
 | `supabase/migrations/` | DB schema — single migration with 8 tables + RLS |
 | `supabase/functions/store-generator/` | Edge function calling Gemini for store config generation |
 | `proxy.ts` | Next 16 auth proxy (replaces `middleware.ts`) — protects `/dashboard/*` |
@@ -77,7 +78,7 @@ See `.env.local.example` for the template.
 - **RLS is on for every table.** A vendor can only read/write rows linked to their `user_id`. The `handle_new_user` trigger auto-creates a `vendors` row on signup.
 - **AI features fail gracefully.** Store generator returns mock data if `GEMINI_API_KEY` is missing. Voice transaction parser returns an error string instead of crashing.
 - **Pure logic is unit-tested.** Anything in `lib/persistence/` has Vitest coverage. Supabase-touching code is verified manually via Studio.
-- **i18n:** voice flow already locale-aware (`lib/i18n/locale-context.tsx`). Other surfaces are EN-only at MVP; bilingual EN/FR is a Phase-2 task.
+- **i18n:** bilingual EN+FR via next-intl. Routes under `app/[locale]/`. Messages in `messages/{en,fr}.json` (namespaced by feature). `useTranslations()` in client components, `getTranslations()` in server components. `Link` from `@/i18n/navigation` preserves locale prefix. Vendor `preferred_locale` persisted to Supabase. Validate coverage with `pnpm i18n:check`.
 
 ## Design system
 

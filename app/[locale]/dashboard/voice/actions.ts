@@ -1,4 +1,5 @@
 'use server'
+import { getLocale } from 'next-intl/server'
 
 import { model } from "@/lib/gemini";
 import { createClient } from '@/lib/supabase/server'
@@ -15,15 +16,19 @@ const transactionSchema = z.object({
 });
 
 export async function parseTransaction(transcript: string) {
+    const locale = await getLocale()
     if (!transcript || transcript.trim().length < 5) {
         return { error: 'Transcript too short' };
     }
 
+    const localeInstruction = locale === "fr" ? "Reponds en francais. Utilise un vocabulaire simple comprehensible par un commercant ouest-africain." : "Respond in English. Use West African English idioms where natural."
     const prompt = `
     Extract transaction details from the following voice transcript spoken by a merchant in Guinea/Liberia.
     Return ONLY a JSON object. Do not include markdown formatting like \`\`\`json.
 
     Transcript: "${transcript}"
+
+    ${localeInstruction}
 
     Output JSON keys:
     - type: "sale" | "expense" | "stock_in" | "stock_out" (default to "sale" if ambiguous)

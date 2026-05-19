@@ -6,10 +6,12 @@ import { Textarea } from '@/components/ui/textarea'
 import { createClient } from '@/lib/supabase/client'
 import { Loader2, Save } from 'lucide-react'
 import { useState } from 'react'
+import { useLocale } from 'next-intl'
 import { toast } from 'sonner'
 import { saveStoreConfiguration } from '@/app/[locale]/dashboard/store/actions'
 
 export function StoreGeneratorForm() {
+    const locale = useLocale()
     const [prompt, setPrompt] = useState('')
     const [loading, setLoading] = useState(false)
     const [saving, setSaving] = useState(false)
@@ -23,7 +25,7 @@ export function StoreGeneratorForm() {
         setResult(null)
         try {
             const { data, error } = await supabase.functions.invoke('store-generator', {
-                body: { prompt }
+                body: { prompt, locale }
             })
             if (error) throw error
             setResult(data)
