@@ -1,5 +1,7 @@
 "use client"
 
+import { useTranslations } from "next-intl"
+
 import { useState } from "react"
 import {
   Home,
@@ -9,15 +11,16 @@ import {
   User,
 } from "lucide-react"
 
-const navItems = [
-  { label: "Home", Icon: Home, href: "/dashboard" },
-  { label: "Transactions", Icon: ArrowLeftRight, href: "/dashboard/transactions" },
-  { label: "Storefront", Icon: Store, href: "/dashboard/store" },
-  { label: "Wallet", Icon: Wallet, href: "/dashboard/wallet" },
-  { label: "Profile", Icon: User, href: "/dashboard/profile" },
+const navItems = (t: any) => [
+  { label: t("home"), Icon: Home, href: "/dashboard" },
+  { label: t("transactions"), Icon: ArrowLeftRight, href: "/dashboard/transactions" },
+  { label: t("storefront"), Icon: Store, href: "/dashboard/store" },
+  { label: t("wallet"), Icon: Wallet, href: "/dashboard/wallet" },
+  { label: t("profile"), Icon: User, href: "/dashboard/profile" },
 ]
 
 export function BottomNav() {
+  const t = useTranslations("dashboard.bottomNav")
   const [active, setActive] = useState("Home")
 
   return (
@@ -31,7 +34,7 @@ export function BottomNav() {
       aria-label="Main navigation"
     >
       <div className="mx-auto flex max-w-lg items-center justify-around px-2 py-1.5">
-        {navItems.map((item) => {
+        {navItems(t).map((item) => {
           const isActive = active === item.label
           return (
             <button

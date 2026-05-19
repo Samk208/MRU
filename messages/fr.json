@@ -39,16 +39,56 @@
       "learnMore": "En savoir plus"
     }
   },
-  "auth": {},
+  "auth": {
+    "loginTitle": "MRU Merchant OS",
+    "loginDescription": "Entrez votre e-mail ci-dessous pour vous connecter",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "exemple@email.com",
+    "passwordLabel": "Mot de passe",
+    "signIn": "Connexion",
+    "signUp": "Inscription"
+  },
   "dashboard": {
-    "nav": {},
+    "nav": {
+      "home": "Accueil",
+      "products": "Produits",
+      "orders": "Commandes",
+      "profile": "Profil",
+      "transactions": "Transactions",
+      "store": "Boutique",
+      "wallet": "Portefeuille",
+      "voice": "Enregistrer une Vente"
+    },
     "store": {},
     "voice": {},
     "products": {},
     "orders": {},
     "transactions": {},
     "wallet": {},
-    "profile": {}
+    "profile": {},
+    "welcome": {
+      "goodMorning": "Bonjour",
+      "goodAfternoon": "Bon Apres-midi",
+      "goodEvening": "Bonsoir",
+      "businessToday": "Voici votre activite aujourdhui",
+      "notifications": "Notifications"
+    },
+    "quickActions": {
+      "sectionTitle": "Actions Rapides",
+      "voiceSale": "Vente Vocale",
+      "viewBalance": "Voir le Solde",
+      "viewStore": "Voir la Boutique",
+      "voiceDesc": "Touchez et parlez",
+      "balanceDesc": "Votre argent",
+      "storeDesc": "Votre magasin"
+    },
+    "bottomNav": {
+      "home": "Accueil",
+      "transactions": "Transactions",
+      "storefront": "Boutique",
+      "wallet": "Portefeuille",
+      "profile": "Profil"
+    }
   },
   "voiceCopy": {
     "promptTitle": "Appuyez et Parlez : Vente, Stock ou Solde",

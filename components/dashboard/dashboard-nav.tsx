@@ -1,35 +1,39 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { LayoutDashboard, Menu, Package, ShoppingCart, User } from 'lucide-react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { Link } from '@/i18n/navigation'
+import { usePathname } from '@/i18n/navigation'
 
-const navItems = [
+const navItems = (t: any) => [
     {
-        title: 'Home',
+        title: t('home'),
         href: '/dashboard',
         icon: LayoutDashboard,
     },
     {
-        title: 'Products',
+        title: t('products'),
         href: '/dashboard/products',
         icon: Package,
     },
     {
-        title: 'Orders',
+        title: t('orders'),
         href: '/dashboard/orders',
         icon: ShoppingCart,
     },
     {
-        title: 'Profile',
+        title: t('profile'),
         href: '/dashboard/profile',
         icon: User,
     },
 ]
 
 export function DashboardNav() {
+    const t = useTranslations("dashboard.nav")
+    const items = navItems(t)
     const pathname = usePathname()
 
     return (
@@ -41,7 +45,7 @@ export function DashboardNav() {
                     <p className="text-xs text-muted-foreground">Merchant OS</p>
                 </div>
                 <nav className="flex-1 p-4 space-y-2">
-                    {navItems.map((item) => (
+                    {items.map((item) => (
                         <Button
                             key={item.href}
                             asChild
@@ -74,7 +78,7 @@ export function DashboardNav() {
             {/* Mobile Bottom Navigation */}
             <div className="md:hidden fixed bottom-0 left-0 right-0 border-t bg-background z-50 pb-safe">
                 <nav className="flex justify-around items-center h-16">
-                    {navItems.map((item) => {
+                    {navItems(t).map((item) => {
                         const isActive = pathname === item.href
                         return (
                             <Link

@@ -39,16 +39,56 @@
       "learnMore": "Learn more"
     }
   },
-  "auth": {},
+  "auth": {
+    "loginTitle": "MRU Merchant OS",
+    "loginDescription": "Enter your email below to login to your account",
+    "emailLabel": "Email",
+    "emailPlaceholder": "m@example.com",
+    "passwordLabel": "Password",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
   "dashboard": {
-    "nav": {},
+    "nav": {
+      "home": "Home",
+      "products": "Products",
+      "orders": "Orders",
+      "profile": "Profile",
+      "transactions": "Transactions",
+      "store": "Storefront",
+      "wallet": "Wallet",
+      "voice": "Log Voice Transaction"
+    },
     "store": {},
     "voice": {},
     "products": {},
     "orders": {},
     "transactions": {},
     "wallet": {},
-    "profile": {}
+    "profile": {},
+    "welcome": {
+      "goodMorning": "Good Morning",
+      "goodAfternoon": "Good Afternoon",
+      "goodEvening": "Good Evening",
+      "businessToday": "Here is your business today",
+      "notifications": "Notifications"
+    },
+    "quickActions": {
+      "sectionTitle": "Quick Actions",
+      "voiceSale": "Voice Sale",
+      "viewBalance": "View Balance",
+      "viewStore": "View Store",
+      "voiceDesc": "Tap & speak",
+      "balanceDesc": "Your money",
+      "storeDesc": "Your shop"
+    },
+    "bottomNav": {
+      "home": "Home",
+      "transactions": "Transactions",
+      "storefront": "Storefront",
+      "wallet": "Wallet",
+      "profile": "Profile"
+    }
   },
   "voiceCopy": {
     "promptTitle": "Tap and Speak: Sale, Stock, or Balance",

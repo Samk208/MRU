@@ -1,18 +1,14 @@
 "use client"
 
+import { useTranslations } from "next-intl"
+
 import { useEffect, useState } from "react"
 import { Bell, Sun, Moon, CloudSun } from "lucide-react"
 
-function getGreeting(): { text: string; Icon: typeof Sun } {
-  const hour = new Date().getHours()
-  if (hour < 12) return { text: "Good Morning", Icon: Sun }
-  if (hour < 17) return { text: "Good Afternoon", Icon: CloudSun }
-  return { text: "Good Evening", Icon: Moon }
-}
-
 export function WelcomeBanner() {
+  const t = useTranslations("dashboard.welcome")
   const [mounted, setMounted] = useState(false)
-  const { text, Icon } = getGreeting()
+  const hour = new Date().getHours(); const text = hour < 12 ? t("goodMorning") : hour < 17 ? t("goodAfternoon") : t("goodEvening"); const Icon = hour < 12 ? Sun : hour < 17 ? CloudSun : Moon
 
   useEffect(() => {
     setMounted(true)
@@ -50,14 +46,14 @@ export function WelcomeBanner() {
             Kadiatou
           </h1>
           <p className="mt-1 text-sm text-[hsl(0_0%_100%/0.75)]">
-            Here is your business today
+            {t("businessToday")}
           </p>
         </div>
 
         <button
           type="button"
           className="relative flex h-10 w-10 items-center justify-center rounded-full bg-[hsl(0_0%_100%/0.15)] transition-colors hover:bg-[hsl(0_0%_100%/0.25)]"
-          aria-label="Notifications"
+          aria-label={t("notifications")}
         >
           <Bell className="h-5 w-5 text-[hsl(0_0%_100%)]" />
           {/* Notification dot */}

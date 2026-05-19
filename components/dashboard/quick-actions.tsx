@@ -1,40 +1,43 @@
 "use client"
 
+import { useTranslations } from "next-intl"
+
 import { useEffect, useState } from "react"
 import { Mic, Wallet, Store } from "lucide-react"
 import Link from "next/link"
 
-const actions = [
+const actions = (t: any) => [
   {
-    label: "Log Voice Transaction",
+    label: t("voiceSale"),
     shortLabel: "Voice Sale",
     Icon: Mic,
     color: "hsl(216 100% 50%)",
     bgColor: "hsl(216 100% 96%)",
-    description: "Tap & speak",
+    description: t("voiceDesc"),
     href: "/dashboard/voice",
   },
   {
-    label: "View Balance",
+    label: t("viewBalance"),
     shortLabel: "Balance",
     Icon: Wallet,
     color: "hsl(152 87% 32%)",
     bgColor: "hsl(152 50% 95%)",
-    description: "Your money",
+    description: t("balanceDesc"),
     href: "/dashboard",
   },
   {
-    label: "View Store",
+    label: t("viewStore"),
     shortLabel: "Store",
     Icon: Store,
     color: "hsl(40 100% 45%)",
     bgColor: "hsl(40 70% 95%)",
-    description: "Your shop",
+    description: t("storeDesc"),
     href: "/dashboard/store",
   },
 ]
 
 export function QuickActions() {
+  const t = useTranslations("dashboard.quickActions")
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -45,10 +48,10 @@ export function QuickActions() {
   return (
     <section aria-label="Quick actions">
       <h2 className="mb-3 text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-        Quick Actions
+        {t("sectionTitle")}
       </h2>
       <div className="grid grid-cols-3 gap-3">
-        {actions.map((action, i) => (
+        {actions(t).map((action, i) => (
           <Link
             key={action.label}
             href={action.href}
